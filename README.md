@@ -1,1 +1,1 @@
-# movie-streaming-platform
+A movie streaming platform
