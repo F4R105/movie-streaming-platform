@@ -3,9 +3,9 @@ import { BarLoader } from "react-spinners";
 
 export default function Register() {
   return (
-    <section className="flex items-center justify-center">
+    <section className="flex items-center justify-center min-h-[60vh]">
       <SignUp
-        path="/register"
+        path="/sign-up"
         routing="path"
         fallbackRedirectUrl="/dashboard"
         fallback={<BarLoader

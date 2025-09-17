@@ -12,13 +12,13 @@ export default function Hero() {
         Browse trending titles, track your favorites, and stay inspired.
       </p>
       <div className="flex gap-4">
-        <Link to="register">
-          <Button size="lg" className="text-lg px-6 py-3">
+        <Link to="sign-up">
+          <Button size="lg" className="cursor-pointer text-lg px-6 py-6">
             Get Started
           </Button>
         </Link>
-        <Link to="login">
-          <Button variant="outline" size="lg" className="text-lg px-6 py-3">
+        <Link to="sign-in">
+          <Button variant="outline" size="lg" className="cursor-pointer text-lg px-6 py-6">
             Login
           </Button>
         </Link>

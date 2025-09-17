@@ -12,8 +12,8 @@ export default function Header() {
         </Link>
         <nav className="flex items-center gap-2">
           <SignedOut>
-            <Link to="/register">
-              <Button variant="default" size="sm">Sign Up</Button>
+            <Link to="/sign-up">
+              <Button variant="default" size="sm" className="cursor-pointer">Sign Up</Button>
             </Link>
           </SignedOut>
           <SignedIn>
