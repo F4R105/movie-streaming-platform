@@ -1,4 +1,5 @@
 // pages/Landing.tsx
+import Footer from "@/components/sections/Footer";
 import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
 import PopularMovies from "@/components/sections/PopularMovies";
@@ -10,6 +11,7 @@ export default function Home() {
       <Header />
       <Hero />
       <PopularMovies />
+      <Footer />
       <LoginCTA />
     </main>
   );

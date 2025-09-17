@@ -12,7 +12,7 @@ export default function Hero() {
         Browse trending titles, track your favorites, and stay inspired.
       </p>
       <div className="flex gap-4">
-        <Link to="#">
+        <Link to="#popular">
           <Button size="lg" className="text-lg px-6 py-3">
             Get Started
           </Button>
