@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchPopularMovies } from "@/lib/tmdb";
 import { Button } from "@/components/ui/button";
 import type { Movie } from "@/types";
+import { Link } from "react-router-dom";
 
 export default function LatestMoviesTable() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -67,7 +68,7 @@ export default function LatestMoviesTable() {
 
       <div className="mt-4 text-right">
         <Button variant="outline" size="sm" asChild>
-          <a href="/movies">View More</a>
+          <Link to="/dashboard/latest">View More</Link>
         </Button>
       </div>
     </section>

@@ -9,6 +9,8 @@ import ErrorPage from "./pages/ErrorPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Movie from "./pages/Movie";
 import GuestRoute from "./components/GuestRoute";
+import DashboardLayout from "./layouts/DashboardLayout";
+import LatestMovies from "./pages/LatestMovies";
 
 export const router = createBrowserRouter([
   {
@@ -21,18 +23,28 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <ProtectedRoute><Dashboard /></ProtectedRoute>,
+        element: <DashboardLayout />,
+        children: [
+          {
+            index: true,
+            element: <ProtectedRoute><Dashboard /></ProtectedRoute>
+          },
+          {
+            path: "latest",
+            element: <ProtectedRoute><LatestMovies /></ProtectedRoute>
+          }
+        ]
       },
       {
-        path: "/movie/:id",
+        path: "movie/:id",
         element: <GuestRoute><Movie /></GuestRoute>,
       },
       {
-        path: "/sign-in",
+        path: "sign-in",
         element: <GuestRoute><Login /></GuestRoute>,
       },
       {
-        path: "/sign-up",
+        path: "sign-up",
         element: <GuestRoute><Register /></GuestRoute>,
       },
     ]
