@@ -1,3 +1,17 @@
+import UserStats from "@/components/dashboard/UserStats";
+import RecommendedMovies from "@/components/dashboard/RecommendedMovies";
+import MovieStatsCharts from "@/components/dashboard/MovieStatsCharts";
+import LatestMoviesTable from "@/components/dashboard/LatestMoviesTable";
+
 export default function Dashboard() {
-  return <h1>Your Dashboard</h1>;
+  return (
+
+    <>
+      <UserStats />
+      <RecommendedMovies />
+      <MovieStatsCharts />
+      <LatestMoviesTable />
+    </>
+
+  )
 }

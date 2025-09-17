@@ -5,6 +5,7 @@ import { router } from "@/router";
 import { RouterProvider } from 'react-router-dom';
 import { ClerkProvider } from '@clerk/clerk-react';
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { shadcn } from "@clerk/themes";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
@@ -14,7 +15,12 @@ if (!PUBLISHABLE_KEY) {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+    <ClerkProvider
+      publishableKey={PUBLISHABLE_KEY}
+      appearance={{
+        baseTheme: shadcn,
+      }}
+    >
       <ThemeProvider>
         <RouterProvider router={router} />
       </ThemeProvider>

@@ -1,18 +1,11 @@
-// pages/Landing.tsx
-import Footer from "@/components/sections/Footer";
-import Header from "@/components/sections/Header";
-import Hero from "@/components/sections/Hero";
-import PopularMovies from "@/components/sections/PopularMovies";
-import LoginCTA from "@/components/ui/clerk-login-button";
+import Hero from "@/components/home/Hero";
+import PopularMovies from "@/components/home/PopularMovies";
 
 export default function Home() {
   return (
-    <main>
-      <Header />
+    <>
       <Hero />
       <PopularMovies />
-      <Footer />
-      <LoginCTA />
-    </main>
+    </>
   );
 }
