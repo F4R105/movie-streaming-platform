@@ -8,6 +8,7 @@ import MainLayout from "./layouts/MainLayout";
 import ErrorPage from "./pages/ErrorPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Movie from "./pages/Movie";
+import GuestRoute from "./components/GuestRoute";
 
 export const router = createBrowserRouter([
   {
@@ -16,7 +17,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <GuestRoute><Home /></GuestRoute>,
       },
       {
         path: "/dashboard",
@@ -24,15 +25,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "/movie/:id",
-        element: <Movie />,
+        element: <GuestRoute><Movie /></GuestRoute>,
       },
       {
         path: "/sign-in",
-        element: <Login />,
+        element: <GuestRoute><Login /></GuestRoute>,
       },
       {
         path: "/sign-up",
-        element: <Register />,
+        element: <GuestRoute><Register /></GuestRoute>,
       },
     ]
   },
