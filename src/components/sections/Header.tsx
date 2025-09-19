@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import ThemeToggle from "@/components/ui/theme-toggler";
 import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
+import { SettingsIcon } from "lucide-react";
 
 export default function Header() {
   return (
@@ -20,6 +21,11 @@ export default function Header() {
             <UserButton />
           </SignedIn>
           <ThemeToggle />
+          <SignedIn>
+            <Link to="/dashboard/settings">
+              <SettingsIcon size={18} />
+            </Link>
+          </SignedIn>
         </nav>
       </div>
     </header>

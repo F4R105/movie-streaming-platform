@@ -16,8 +16,8 @@ export default function MovieStatsChart() {
   };
 
   return (
-    <section>
-      <h2 className="text-xl font-semibold mb-4">Your Genre Breakdown</h2>
+    <section className="max-w-4xl mx-auto py-10">
+      <h2 className="text-xl font-semibold mb-4">Movie stats</h2>
       {/* <Bar data={data} /> */}
     </section>
   );

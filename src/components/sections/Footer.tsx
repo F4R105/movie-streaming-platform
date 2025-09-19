@@ -1,4 +1,4 @@
-import { SignedOut } from "@clerk/clerk-react";
+import { SignedIn, SignedOut } from "@clerk/clerk-react";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
@@ -13,6 +13,10 @@ export default function Footer() {
             <Link to="/sign-up" className="hover:underline">Sign Up</Link>
           </div>
         </SignedOut>
+
+        <SignedIn>
+          <Link to={'https://www.github.com/F$R105'}>By Faraji</Link>
+        </SignedIn>
       </div>
     </footer>
   );

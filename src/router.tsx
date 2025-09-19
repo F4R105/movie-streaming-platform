@@ -11,6 +11,7 @@ import Movie from "./pages/Movie";
 import GuestRoute from "./components/GuestRoute";
 import DashboardLayout from "./layouts/DashboardLayout";
 import LatestMovies from "./pages/LatestMovies";
+import SettingsPage from "./pages/Settings";
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
           {
             path: "latest",
             element: <ProtectedRoute><LatestMovies /></ProtectedRoute>
+          },
+          {
+            path: "settings",
+            element: <ProtectedRoute><SettingsPage /></ProtectedRoute>
           }
         ]
       },
