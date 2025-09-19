@@ -21,3 +21,23 @@ export async function fetchRecommendedMovies(movieId: number) {
   const data = await res.json();
   return data.results;
 }
+
+export async function fetchMovies({ page = 1, genre, year, sortBy, query }: any) {
+  const base = query
+    ? `https://api.themoviedb.org/3/search/movie`
+    : `https://api.themoviedb.org/3/discover/movie`;
+
+  const params = new URLSearchParams({
+    api_key: API_KEY,
+    language: "en-US",
+    page: page.toString(),
+    sort_by: sortBy || "release_date.desc",
+    with_genres: genre || "",
+    primary_release_year: year || "",
+    query: query || "",
+  });
+
+  const res = await fetch(`${base}?${params}`);
+  const data = await res.json();
+  return data.results;
+}

@@ -12,6 +12,7 @@ import GuestRoute from "./components/GuestRoute";
 import DashboardLayout from "./layouts/DashboardLayout";
 import LatestMovies from "./pages/LatestMovies";
 import SettingsPage from "./pages/Settings";
+import MovieMenu from "./pages/MovieMenu";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <GuestRoute><Home /></GuestRoute>,
+      },
+      {
+        path: "/movies",
+        element: <GuestRoute><MovieMenu /></GuestRoute>,
       },
       {
         path: "/dashboard",
