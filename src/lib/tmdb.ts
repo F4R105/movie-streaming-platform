@@ -1,11 +1,9 @@
 import type { Movie, Genre } from "@/types";
 
-// src/lib/tmdb.ts
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE_URL = "https://api.themoviedb.org/3";
 
 export async function fetchGenres(): Promise<Genre[]> {
-  const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   const res = await fetch(
     `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`
   );
@@ -44,8 +42,8 @@ export async function fetchRecommendedMovies(movieId: number) {
 
 export async function fetchMovies({ page = 1, genre, year, sortBy, query }: any) {
   const base = query
-    ? `https://api.themoviedb.org/3/search/movie`
-    : `https://api.themoviedb.org/3/discover/movie`;
+    ? `${BASE_URL}/search/movie`
+    : `${BASE_URL}/discover/movie`;
 
   const params = new URLSearchParams({
     api_key: API_KEY,

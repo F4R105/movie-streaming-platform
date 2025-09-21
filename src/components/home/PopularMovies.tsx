@@ -23,7 +23,7 @@ export default function PopularMovies() {
       <h2 className="text-2xl font-semibold mb-6">Popular Movies</h2>
       {loading ?
         (
-          <div className="flex justify-center items-center"><Loader /></div>
+          <div className="flex justify-center items-center py-5"><Loader /></div>
         ) : (
           movies.length === 0 ? (
             <p className="text-muted-foreground">No movies available</p>

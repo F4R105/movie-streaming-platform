@@ -28,7 +28,7 @@ export default function RecommendedMovies({ movieId }: { movieId: number }) {
       <h2 className="text-2xl font-semibold mb-6">Recommended</h2>
       {loading ?
         (
-          <div className="flex justify-center items-center"><Loader /></div>
+          <div className="flex justify-center items-center py-5"><Loader /></div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {recommended.length > 0 ? (
