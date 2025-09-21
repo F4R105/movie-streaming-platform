@@ -14,7 +14,7 @@ export default function MovieSearchBar({ onSearch, disabled }: {
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="Search by title or keyword…"
-        className="input"
+        className="input px-2"
         disabled={disabled}
       />
       <Button onClick={() => onSearch(input)} disabled={disabled}>

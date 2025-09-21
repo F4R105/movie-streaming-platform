@@ -29,19 +29,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <DashboardLayout />,
+        element: <ProtectedRoute><DashboardLayout /></ProtectedRoute>,
         children: [
           {
             index: true,
-            element: <ProtectedRoute><Dashboard /></ProtectedRoute>
+            element: <Dashboard />
           },
           {
             path: "latest",
-            element: <ProtectedRoute><LatestMovies /></ProtectedRoute>
+            element: <LatestMovies />
           },
           {
             path: "settings",
-            element: <ProtectedRoute><SettingsPage /></ProtectedRoute>
+            element: <SettingsPage />
           }
         ]
       },
