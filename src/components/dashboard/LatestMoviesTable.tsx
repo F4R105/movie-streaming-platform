@@ -3,11 +3,13 @@ import { fetchPopularMovies } from "@/lib/tmdb";
 import { Button } from "@/components/ui/button";
 import type { Movie } from "@/types";
 import { Link } from "react-router-dom";
+import Loader from "../Loader";
 
 export default function LatestMoviesTable() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [sortKey, setSortKey] = useState<"release_date" | "popularity">("release_date");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
+  const [loading, setLoading] = useState<boolean>(true);
 
   const sortedMovies = [...movies].sort((a, b) => {
     const aVal = sortKey === "release_date" ? new Date(a.release_date).getTime() : a.popularity;
@@ -16,13 +18,23 @@ export default function LatestMoviesTable() {
   });
 
   useEffect(() => {
-    fetchPopularMovies().then((data: Movie[]) => {
-      const sorted = data
-        .sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime())
-        .slice(0, 5);
-      setMovies(sorted);
-    });
+    setLoading(true);
+    fetchPopularMovies()
+      .then((data: Movie[]) => {
+        const sorted = data
+          .sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime())
+          .slice(0, 5);
+        setMovies(sorted);
+      })
+      .catch(console.error)
+      .finally(() => setLoading(false));
   }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center"><Loader /></div>
+    )
+  }
 
   return (
     <section className="max-w-4xl mx-auto py-10">

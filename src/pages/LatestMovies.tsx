@@ -1,3 +1,4 @@
+import Loader from "@/components/Loader";
 import { fetchPopularMovies } from "@/lib/tmdb";
 import type { Movie } from "@/types";
 import { useEffect, useState } from "react";
@@ -7,6 +8,7 @@ function LatestMovies() {
     const [movies, setMovies] = useState<Movie[]>([]);
     const [sortKey, setSortKey] = useState<"release_date" | "popularity">("release_date");
     const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
+    const [loading, setLoading] = useState<boolean>(true);
 
     const sortedMovies = [...movies].sort((a, b) => {
         const aVal = sortKey === "release_date" ? new Date(a.release_date).getTime() : a.popularity;
@@ -15,12 +17,22 @@ function LatestMovies() {
     });
 
     useEffect(() => {
-        fetchPopularMovies().then((data: Movie[]) => {
-            const sorted = data
-                .sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime());
-            setMovies(sorted);
-        });
+        setLoading(true);
+        fetchPopularMovies()
+            .then((data: Movie[]) => {
+                const sorted = data
+                    .sort((a, b) => new Date(b.release_date).getTime() - new Date(a.release_date).getTime());
+                setMovies(sorted);
+            })
+            .catch(console.error)
+            .finally(() => setLoading(false));
     }, []);
+
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center min-h-[50vh]"><Loader /></div>
+        )
+    }
 
     return (
         <section className="max-w-4xl mx-auto py-10">

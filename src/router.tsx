@@ -60,7 +60,11 @@ export const router = createBrowserRouter([
     ]
   },
   {
-    path: "/login/sso-callback",
+    path: "/sign-in/sso-callback",
+    element: <SsoCallback />,
+  },
+  {
+    path: "/sign-up/sso-callback",
     element: <SsoCallback />,
   },
 ]);

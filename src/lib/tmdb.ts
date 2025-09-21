@@ -1,6 +1,17 @@
+import type { Movie, Genre } from "@/types";
+
 // src/lib/tmdb.ts
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE_URL = "https://api.themoviedb.org/3";
+
+export async function fetchGenres(): Promise<Genre[]> {
+  const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+  const res = await fetch(
+    `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`
+  );
+  const data = await res.json();
+  return data.genres as Genre[];
+}
 
 export async function fetchPopularMovies() {
   const res = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`);
@@ -14,6 +25,15 @@ export async function fetchMovieDetails(movieId: string) {
   if (!res.ok) throw new Error(`Failed to fetch details for movie ID ${movieId}`);
   return res.json();
 }
+
+export async function fetchMovieStats(): Promise<Movie[]> {
+  const res = await fetch(
+    `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=1`
+  );
+  const data = await res.json();
+  return data.results as Movie[];
+}
+
 
 export async function fetchRecommendedMovies(movieId: number) {
   const res = await fetch(`${BASE_URL}/movie/${movieId}/recommendations?api_key=${API_KEY}&language=en-US&page=1`);

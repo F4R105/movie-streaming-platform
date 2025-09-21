@@ -10,13 +10,14 @@ export default function Footer() {
         <div className="flex gap-4 mt-2 sm:mt-0">
           <Link to="/movies" className="hover:underline">Browse movies</Link>
           <SignedOut>
+            <Link to="/sign-in" className="hover:underline">Sign In</Link>
             <Link to="/sign-up" className="hover:underline">Sign Up</Link>
           </SignedOut>
+          <SignedIn>
+            <Link to={'https://www.github.com/F4R105'}>Github</Link>
+          </SignedIn>
         </div>
 
-        <SignedIn>
-          <Link to={'https://www.github.com/F4R105'}>By Faraji</Link>
-        </SignedIn>
       </div>
     </footer>
   );

@@ -1,24 +1,57 @@
-// import { Bar } from "react-chartjs-2";
-// import { Chart as ChartJS, BarElement, CategoryScale, LinearScale } from "chart.js";
+import { useEffect, useState } from "react";
+import { fetchGenres, fetchMovieStats } from "@/lib/tmdb";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 
-// ChartJS.register(BarElement, CategoryScale, LinearScale);
+type GenreRating = {
+  genre: string;
+  avgRating: number;
+};
 
 export default function MovieStatsChart() {
-  const data = {
-    labels: ["Action", "Drama", "Comedy", "Sci-Fi", "Romance"],
-    datasets: [
-      {
-        label: "Watched by Genre",
-        data: [12, 9, 7, 15, 4],
-        backgroundColor: "#e11d48",
-      },
-    ],
-  };
+  const [data, setData] = useState<GenreRating[]>([]);
+  const [genreMap, setGenreMap] = useState<Record<number, string>>({});
+
+  useEffect(() => {
+    fetchGenres()
+      .then((genres) => {
+        const map = Object.fromEntries(genres.map((g) => [g.id, g.name]));
+        setGenreMap(map);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetchMovieStats().then((movies) => {
+      const genreRatings: Record<string, number[]> = {};
+
+      movies.forEach((movie) => {
+        movie.genre_ids.forEach((id) => {
+          const genre = genreMap[id];
+          if (!genre) return;
+          if (!genreRatings[genre]) genreRatings[genre] = [];
+          genreRatings[genre].push(movie.vote_average);
+        });
+      });
+
+      const chartData = Object.entries(genreRatings).map(([genre, ratings]) => ({
+        genre,
+        avgRating: ratings.reduce((a, b) => a + b, 0) / ratings.length,
+      }));
+
+      setData(chartData);
+    });
+  }, [genreMap]);
 
   return (
-    <section className="max-w-4xl mx-auto py-10">
-      <h2 className="text-xl font-semibold mb-4">Movie stats</h2>
-      {/* <Bar data={data} /> */}
-    </section>
+    <div className="bg-muted rounded-xl p-6 max-w-4xl mx-auto">
+      <h2 className="text-xl font-semibold mb-4">📊 Average Rating by Genre</h2>
+      <ResponsiveContainer width="100%" height={300}>
+        <BarChart data={data}>
+          <XAxis dataKey="genre" />
+          <YAxis domain={[0, 10]} />
+          <Tooltip />
+          <Bar dataKey="avgRating" fill="#8884d8" radius={[4, 4, 0, 0]} />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
   );
 }
