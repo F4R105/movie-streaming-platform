@@ -9,13 +9,12 @@ export default function Footer() {
 
         <SignedOut>
           <div className="flex gap-4 mt-2 sm:mt-0">
-            <Link to="#popular" className="hover:underline">Popular</Link>
             <Link to="/sign-up" className="hover:underline">Sign Up</Link>
           </div>
         </SignedOut>
 
         <SignedIn>
-          <Link to={'https://www.github.com/F$R105'}>By Faraji</Link>
+          <Link to={'https://www.github.com/F4R105'}>By Faraji</Link>
         </SignedIn>
       </div>
     </footer>

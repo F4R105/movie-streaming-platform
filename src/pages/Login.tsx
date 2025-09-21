@@ -1,5 +1,5 @@
+import Loader from "@/components/Loader";
 import { SignIn } from "@clerk/clerk-react";
-import { BarLoader } from "react-spinners";
 
 export default function Login() {
   return (
@@ -8,11 +8,7 @@ export default function Login() {
         path="/sign-in"
         routing="path"
         fallbackRedirectUrl="/dashboard"
-        fallback={<BarLoader
-          loading={true}
-          aria-label="Loading Spinner"
-          data-testid="loader"
-        />}
+        fallback={<Loader />}
       />
     </section>
   );

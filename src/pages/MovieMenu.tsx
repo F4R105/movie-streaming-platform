@@ -23,7 +23,7 @@ export default function MovieMenu() {
     }, [page, query, genre, year, rating]);
 
     return (
-        <main className="max-w-4xl mx-auto px-4 space-y-6">
+        <main className="max-w-4xl mx-auto px-4 pb-10 space-y-6">
             <div className="space-y-6 mb-10 sticky top-18 py-5 bg-background">
                 <h1 className="text-3xl font-bold">🎬 Explore Movies</h1>
 
@@ -49,22 +49,24 @@ export default function MovieMenu() {
                 </div>
             )}
 
-            <div className="mt-6 flex justify-center gap-2">
-                <Button
-                    variant="outline"
-                    onClick={() => setPage((p) => Math.max(p - 1, 1))}
-                    disabled={loading || page === 1}
-                >
-                    Previous
-                </Button>
-                <Button
-                    variant="outline"
-                    onClick={() => setPage((p) => p + 1)}
-                    disabled={loading}
-                >
-                    Next
-                </Button>
-            </div>
+            {!loading && (
+                <div className="mt-6 flex justify-center gap-2">
+                    <Button
+                        variant="outline"
+                        onClick={() => setPage((p) => Math.max(p - 1, 1))}
+                        disabled={loading || page === 1}
+                    >
+                        Previous
+                    </Button>
+                    <Button
+                        variant="outline"
+                        onClick={() => setPage((p) => p + 1)}
+                        disabled={loading}
+                    >
+                        Next
+                    </Button>
+                </div>
+            )}
         </main>
     );
 }

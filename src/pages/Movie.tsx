@@ -3,32 +3,43 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMovieDetails } from "@/lib/tmdb";
 import RecommendedMovies from "@/components/sections/RecommendedMovies";
+import Loader from "@/components/Loader";
 
 export default function Movie() {
   const { id } = useParams();
   const movieId = id ? parseInt(id) : null;
 
-  if (!movieId) {
-    return <p className="text-center py-10">Invalid movie ID</p>;
-  }
-
   const [movie, setMovie] = useState<any>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     if (!id) return;
 
+    setLoading(true);
     setMovie(null); // Clear previous data immediately
     fetchMovieDetails(id)
       .then(setMovie)
-      .catch((err) => console.error("Movie fetch error:", err));
+      .catch((err) => console.error("Movie fetch error:", err))
+      .finally(() => setLoading(false));
   }, [id]);
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-[50vh]"><Loader /></div>
+    )
+  }
 
-  if (!movie) return <p className="text-center py-10">Loading movie details...</p>;
+  if (!movieId || !movie) {
+    return (
+      <div className="flex justify-center items-center min-h-[50vh]">
+        <p className="text-center py-10">Invalid movie ID</p>
+      </div>
+    )
+  }
 
   return (
     <>
-      <section className="max-w-4xl mx-auto flex gap-10 px-4 py-10" id="movie-details">
+      <section className="max-w-4xl mx-auto flex flex-col md:flex-row gap-10 px-4 py-10" id="movie-details">
         <img
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt={movie.title}
