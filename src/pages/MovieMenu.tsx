@@ -5,6 +5,7 @@ import MovieCard from "@/components/movies/MovieCard";
 import MovieFilters from "@/components/movies/MoviesFilter";
 import MovieSearchBar from "@/components/movies/SearchBar";
 import { Button } from "@/components/ui/button";
+import Loader from "@/components/Loader";
 
 export default function MovieMenu() {
     const [movies, setMovies] = useState<Movie[]>([]);
@@ -40,7 +41,7 @@ export default function MovieMenu() {
             </div>
 
             {loading ? (
-                <p className="text-center py-10 text-muted-foreground">Loading movies…</p>
+                <p className="text-center py-10 text-muted-foreground"><Loader /></p>
             ) : (
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {movies.map((movie) => (

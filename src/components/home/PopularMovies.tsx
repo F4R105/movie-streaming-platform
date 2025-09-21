@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { fetchPopularMovies } from "@/lib/tmdb";
 import { Link } from "react-router-dom";
+import Loader from "../Loader";
 
 type Movie = {
   id: number;
@@ -12,10 +13,21 @@ type Movie = {
 
 export default function PopularMovies() {
   const [movies, setMovies] = useState<Movie[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    fetchPopularMovies().then(setMovies).catch(console.error);
+    setLoading(true);
+    fetchPopularMovies()
+      .then(setMovies)
+      .catch(console.error)
+      .finally(() => setLoading(false));
   }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center"><Loader /></div>
+    )
+  }
 
   return (
     <section className="px-4 py-10 max-w-4xl mx-auto" id="popular">

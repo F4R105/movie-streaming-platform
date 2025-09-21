@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { fetchRecommendedMovies } from "@/lib/tmdb";
 import { Link } from "react-router-dom";
+import Loader from "../Loader";
 
 type Movie = {
   id: number;
@@ -12,12 +13,21 @@ type Movie = {
 
 export default function RecommendedMovies({ movieId }: { movieId: number }) {
   const [recommended, setRecommended] = useState<Movie[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    setLoading(true);
     fetchRecommendedMovies(movieId)
       .then(setRecommended)
-      .catch((err) => console.error("Recommendation error:", err));
+      .catch((err) => console.error("Recommendation error:", err))
+      .finally(() => setLoading(false));
   }, [movieId]);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center"><Loader /></div>
+    )
+  }
 
   return (
     <section className="px-4 py-10 bg-muted/30 max-w-4xl mx-auto rounded-2xl" id="recommended">

@@ -7,11 +7,12 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center text-sm text-muted-foreground">
         <p>&copy; {new Date().getFullYear()} MoviePulse. All rights reserved.</p>
 
-        <SignedOut>
-          <div className="flex gap-4 mt-2 sm:mt-0">
+        <div className="flex gap-4 mt-2 sm:mt-0">
+          <Link to="/movies" className="hover:underline">Browse movies</Link>
+          <SignedOut>
             <Link to="/sign-up" className="hover:underline">Sign Up</Link>
-          </div>
-        </SignedOut>
+          </SignedOut>
+        </div>
 
         <SignedIn>
           <Link to={'https://www.github.com/F4R105'}>By Faraji</Link>
