@@ -7,7 +7,7 @@ export default function Login() {
       <SignIn
         path="/sign-in"
         routing="path"
-        fallbackRedirectUrl="/dashboard"
+        // fallbackRedirectUrl="/dashboard"
         fallback={<Loader />}
       />
     </section>
