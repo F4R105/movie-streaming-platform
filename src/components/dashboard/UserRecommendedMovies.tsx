@@ -31,7 +31,10 @@ export default function UserRecommendedMovies() {
       <h2 className="text-xl font-semibold mb-6">Recommended Movies for you</h2>
       <ul className="space-y-4">
         {recommended.map((movie) => (
-          <li key={movie.id} className="flex items-center gap-4 bg-muted rounded-lg p-4">
+          <li
+            key={movie.id}
+            className="cursor-pointer flex items-center gap-4 bg-muted rounded-lg p-4 transition-transform duration-200 hover:scale-[1.02] hover:shadow-md hover:bg-muted/80"
+          >
             <img
               src={movie.poster_path}
               alt={movie.title}

@@ -7,6 +7,25 @@ type GenreRating = {
   avgRating: number;
 };
 
+const CustomXAxisTick = ({ x, y, payload }: any) => {
+  return (
+    <g transform={`translate(${x},${y})`}>
+      <text
+        x={0}
+        y={0}
+        dy={16}
+        textAnchor="end"
+        fill="#888"
+        transform="rotate(-35)"
+        fontSize={12}
+      >
+        {payload.value}
+      </text>
+    </g>
+  );
+};
+
+
 export default function MovieStatsChart() {
   const [data, setData] = useState<GenreRating[]>([]);
   const [genreMap, setGenreMap] = useState<Record<number, string>>({});
@@ -46,7 +65,12 @@ export default function MovieStatsChart() {
       <h2 className="text-xl font-semibold mb-4">📊 Average Rating by Genre</h2>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data}>
-          <XAxis dataKey="genre" />
+          <XAxis
+            dataKey="genre"
+            interval={0}
+            angle={-50}
+            // textAnchor="end"
+          />
           <YAxis domain={[0, 10]} />
           <Tooltip />
           <Bar dataKey="avgRating" fill="#8884d8" radius={[4, 4, 0, 0]} />

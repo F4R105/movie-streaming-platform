@@ -34,7 +34,9 @@ src/
 
 ### ⚠️ Known Issues / Limitations
 
-- Limited access to user-specific movie data (e.g. recommendations, movie browsed, watchlist) due to using Clerk for authentication instead of TMDb’s native user auth system. So, both are hardcoded.
+- Limited access to user-specific movie data (e.g. recommendations, movie browsed, watchlist) due to using Clerk for authentication instead of TMDb’s native user auth system. So, both are hardcoded. With time, possible solutionI could explore is to use TMDB API auth or integrate clerk auth system with TMDB auth system.
+
+- Requirement to show movie stats on dashboard did not specify which movie stats to show. I chose avarage ratings on each genres. I had issue with horizontal labels where genre names are long. With time, possible solutions I could explore is to show genre name on tool tip or use another chart.
 
 ---
 
@@ -51,6 +53,6 @@ src/
 | [Vite](https://vitejs.dev)             | Build tool & dev server               |
 | [Favicon.io](https://favicon.io)       | Favicon generator                     |
 | [React Spinners](https://www.davidhu.io/react-spinners/) | Loading animations                    |
-| **[Microsoft Copilot](https://copilot.microsoft.com)** | AI-powered coding assistant, logic design, documentation, and debugging support |
+| [Microsoft Copilot](https://copilot.microsoft.com) | AI-powered coding assistant, logic design, documentation, and debugging support |
 
 ---
