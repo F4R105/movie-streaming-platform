@@ -7,24 +7,6 @@ type GenreRating = {
   avgRating: number;
 };
 
-const CustomXAxisTick = ({ x, y, payload }: any) => {
-  return (
-    <g transform={`translate(${x},${y})`}>
-      <text
-        x={0}
-        y={0}
-        dy={16}
-        textAnchor="end"
-        fill="#888"
-        transform="rotate(-35)"
-        fontSize={12}
-      >
-        {payload.value}
-      </text>
-    </g>
-  );
-};
-
 
 export default function MovieStatsChart() {
   const [data, setData] = useState<GenreRating[]>([]);
