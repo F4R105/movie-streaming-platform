@@ -7,7 +7,7 @@ export default function Register() {
       <SignUp
         path="/sign-up"
         routing="path"
-        // fallbackRedirectUrl="/dashboard"
+        fallbackRedirectUrl="/dashboard"
         fallback={<Loader/>}
       />
     </section>

@@ -1,4 +1,3 @@
-// src/components/RecommendedMovies.tsx
 import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { fetchRecommendedMovies } from "@/lib/tmdb";
