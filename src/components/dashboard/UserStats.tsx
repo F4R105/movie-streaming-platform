@@ -7,7 +7,7 @@ export default function UserStats() {
   const watchlistCount = 12;
 
   return (
-    <section className="max-w-4xl mx-auto py-10">
+    <section className="max-w-4xl mx-auto pt-10">
       <h2 className="text-xl font-semibold mb-4">Welcome back, {user?.firstName}!</h2>
       <div className="grid grid-cols-2 gap-4">
         <div className="p-4 rounded bg-muted">

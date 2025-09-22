@@ -4,12 +4,7 @@ import { Card } from "@/components/ui/card";
 import { fetchRecommendedMovies } from "@/lib/tmdb";
 import { Link } from "react-router-dom";
 import Loader from "../Loader";
-
-type Movie = {
-  id: number;
-  title: string;
-  poster_path: string;
-};
+import type { Movie } from "@/types";
 
 export default function RecommendedMovies({ movieId }: { movieId: number }) {
   const [recommended, setRecommended] = useState<Movie[]>([]);

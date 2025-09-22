@@ -14,7 +14,7 @@ export default function Footer() {
             <Link to="/sign-up" className="hover:underline">Sign Up</Link>
           </SignedOut>
           <SignedIn>
-            <Link to={'https://www.github.com/F4R105'}>Github</Link>
+            <Link to={'https://github.com/F4R105/movie-streaming-platform'}>Github</Link>
           </SignedIn>
         </div>
 

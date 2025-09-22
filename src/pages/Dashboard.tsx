@@ -1,5 +1,5 @@
 import UserStats from "@/components/dashboard/UserStats";
-import RecommendedMovies from "@/components/dashboard/RecommendedMovies";
+import RecommendedMovies from "@/components/dashboard/UserRecommendedMovies";
 import MovieStatsCharts from "@/components/dashboard/MovieStatsCharts";
 import LatestMoviesTable from "@/components/dashboard/LatestMoviesTable";
 

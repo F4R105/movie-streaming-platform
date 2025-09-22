@@ -10,6 +10,6 @@ export type Movie = {
   popularity: number;
   poster_path: string;
   vote_average: number;
-  genre_ids: number[]; // ✅ Add this line
+  genre_ids: number[];
 };
 
